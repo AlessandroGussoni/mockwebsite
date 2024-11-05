@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoForge Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: black;
+            color: white;
+            line-height: 1.5;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #4ade80, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+                gap: 2rem;
+            }
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4ade80;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 5rem 1.5rem;
+            text-align: center;
+            background: linear-gradient(to right, rgba(21, 128, 61, 0.2), rgba(29, 78, 216, 0.2));
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero p {
+            color: #d1d5db;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(to right, #22c55e, #3b82f6);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 9999px;
+            font-weight: bold;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: filter 0.3s;
+        }
+
+        .cta-button:hover {
+            filter: brightness(1.1);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 0.5rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2.25rem;
+            color: #4ade80;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: #9ca3af;
+        }
+
+        /* Board Section */
+        .board {
+            padding: 4rem 1.5rem;
+            background: linear-gradient(to bottom, black, #111827);
+        }
+
+        .board h2 {
+            text-align: center;
+            font-size: 1.875rem;
+            margin-bottom: 3rem;
+        }
+
+        .board-members {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .board-members {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .member-card {
+            text-align: center;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .member-img-container {
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background-color: #1e40af;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .member-img:hover {
+            transform: scale(1.05);
+        }
+
+        .member-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1.5rem 0 0.5rem;
+            color: #fff;
+        }
+
+        .member-role {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 1.5rem;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 1.875rem;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            padding: 1.5rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 0.5rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background: linear-gradient(to right, #22c55e, #3b82f6);
+        }
+
+        .author-info h4 {
+            font-weight: bold;
+        }
+
+        .author-info p {
+            color: #9ca3af;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            background: linear-gradient(to right, rgba(21, 128, 61, 0.2), rgba(29, 78, 216, 0.2));
+        }
+
+        .footer-cta h2 {
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-cta p {
+            color: #d1d5db;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-cta .cta-button {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CryptoForge Pro</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Mining</a>
+            <a href="#">Soldoni</a>
+            <a href="#">Join Now</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>10,000% ROI Mining Solution</h1>
+        <p>Unisciti al futuro del passive income mining network marketing con Quantum AI technology</p>
+        <button class="cta-button">Start Mining Now! 🚀</button>
+        <div class="stats">
+            <div class="stat-card">
+                <h3>$1M+</h3>
+                <p>Profitti al giorno 🤑</p>
+            </div>
+            <div class="stat-card">
+                <h3>50k+</h3>
+                <p>Utenti truffat... ehm volevo dire attivi</p>
+            </div>
+            <div class="stat-card">
+                <h3>99.9%</h3>
+                <p>Uptime</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="board">
+        <h2>Il nostro board di esperti</h2>
+        <div class="board-members">
+            <div class="member-card">
+                <div class="member-img-container">
+                    <img src="data/osama.jpg" alt="Dr. Crypto Nakamoto" class="member-img">
+                </div>
+                <h3 class="member-name">Dr. Osama Crypto</h3>
+                <p class="member-role">Chief Executive Officer</p>
+            </div>
+            <div class="member-card">
+                <div class="member-img-container">
+                    <img src="data/pika.jpg" alt="Alexandra Blockchain" class="member-img">
+                </div>
+                <h3 class="member-name">Ciro Blockchain</h3>
+                <p class="member-role">Chief HR Officer</p>
+            </div>
+            <div class="member-card">
+                <div class="member-img-container">
+                    <img src="data/nonno.jpg" alt="Max Hashpower" class="member-img">
+                </div>
+                <h3 class="member-name">Avv. Donato Truffaldoni</h3>
+                <p class="member-role">Chief Financial Officer</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Storie di successo</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">Ho lasciato il mio lavoro dopo solo due settimane di mining! Adesso ho una yacht e al posto dei tovaglioli uso banconote da 50 🚀💰</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4>Luca Falsonome</h4>
+                        <p>Napoli, IT</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">La tecnologia quantum AI è rivoluzionaria! Grazie Dr. Osama per questo nuovo metodo che sta cambiando la vita di milioni di italiani! 🤑</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4>Sara Scam</h4>
+                        <p>Milano, IT</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-cta">
+        <h2>Unisciti alla rivoluzione del mining Oggi!</h2>
+        <p>Limited time offer: Ottieni uno sconto sul mining della crypto #Gu$tar8 del 50%!</p>
+        <button class="cta-button">Start Mining Now! 💎</button>
+    </section>
+</body>
+</html>
